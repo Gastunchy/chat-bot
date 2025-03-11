@@ -1,16 +1,12 @@
-FROM node:18
+# Usar la imagen oficial de Node-RED
+FROM nodered/node-red:latest
 
-# Crear el directorio de trabajo
-WORKDIR /app
+# Exponer el puerto que usará Node-RED
+EXPOSE 1880
 
-# Clonar Node-ES desde GitHub
-RUN git clone https://github.com/FlowiseAI/Flowise.git . 
+# Copiar el flujo de trabajo y configuraciones de Node-RED (si tienes archivos específicos)
+# Puedes personalizar esto si tienes configuraciones previas
+COPY flows.json /data/
 
-# Instalar dependencias
-RUN npm install && npm run build
-
-# Exponer el puerto
-EXPOSE 3000
-
-# Comando para ejecutar la aplicación
+# Ejecutar Node-RED
 CMD ["npm", "start"]
