@@ -1,13 +1,14 @@
-FROM nodered/node-red
+# Usa la imagen oficial de n8n
+FROM n8nio/n8n:latest
 
-# Establecer el directorio de trabajo
+# Establece el directorio de trabajo
 WORKDIR /data
 
-# Exponer el puerto 1880
-EXPOSE 1880
+# Copia los archivos de configuración (si los tienes)
+# COPY .env /data/.env
 
-# Definir el volumen para persistencia de datos
-VOLUME ["/data"]
+# Expone el puerto por defecto de n8n
+EXPOSE 5678
 
-# Comando para ejecutar Node-RED
-CMD ["npm", "start", "--", "--userDir", "/data"]
+# Comando por defecto para iniciar n8n
+CMD ["n8n"]
