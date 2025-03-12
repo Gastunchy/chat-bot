@@ -30,4 +30,5 @@ def index():
     return render_template('index.html', text=text, message=message)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Cambiar el puerto de 5000 a 8080
+    app.run(debug=True, host='0.0.0.0', port=8080)

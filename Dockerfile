@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Exponer el puerto en el que Flask correrá
-EXPOSE 5000
+EXPOSE 8080
 
 # Crear la carpeta de datos en el contenedor
 RUN mkdir -p /app/data
