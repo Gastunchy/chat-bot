@@ -1,14 +1,20 @@
-# Usa la imagen oficial de n8n
-FROM n8nio/n8n:latest
+# Usar la imagen oficial de Python
+FROM python:3.9-slim
 
-# Establece el directorio de trabajo
-WORKDIR /data
+# Establecer el directorio de trabajo
+WORKDIR /app
 
-# Copia los archivos de configuración (si los tienes)
-# COPY .env /data/.env
+# Copiar los archivos necesarios al contenedor
+COPY . /app
 
-# Expone el puerto por defecto de n8n
-EXPOSE 5678
+# Instalar las dependencias
+RUN pip install -r requirements.txt
 
-# Comando por defecto para iniciar n8n
-CMD ["n8n"]
+# Exponer el puerto en el que Flask correrá
+EXPOSE 5000
+
+# Crear la carpeta de datos en el contenedor
+RUN mkdir -p /app/data
+
+# Comando para ejecutar la aplicación
+CMD ["python", "app.py"]

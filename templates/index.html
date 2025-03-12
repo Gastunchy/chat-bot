@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar Texto</title>
+</head>
+<body>
+    <h1>Escribe tu texto</h1>
+    
+    <!-- Mostrar el mensaje de confirmación si existe -->
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+    
+    <form method="POST">
+        <textarea name="text" rows="10" cols="30">{{ text }}</textarea><br><br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
